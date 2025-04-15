@@ -31,7 +31,7 @@
   }
 
   function verifyAdmin() {
-    const url = "/entities/validate";
+    const url = "http://localhost:3000/api/entities/validate";
 
     const data = {
       domain: appUrl,
