@@ -1,5 +1,6 @@
 (async function () {
-  const appUrl = "http://localhost:58532"; // Angular app URL
+  console.log("Checker script loaded");
+  const appUrl = "http://localhost:58386/"; // Angular app URL
   const scriptTag = document.currentScript;
   const urlParams = new URLSearchParams(scriptTag.src.split("?")[1]);
   const apiKey = urlParams.get("key");
@@ -34,7 +35,7 @@
     const url = "http://localhost:3000/api/entities/validate";
 
     const data = {
-      domain: appUrl,
+      domain: "http://localhost:60610",
       apiKey: apiKey,
       adminEmail: adminEmail,
     };
