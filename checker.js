@@ -35,7 +35,7 @@
     const url = "http://localhost:3000/api/entities/validate";
 
     const data = {
-      domain: "http://localhost:60610",
+      domain: window.location.host,
       apiKey: apiKey,
       adminEmail: adminEmail,
     };
