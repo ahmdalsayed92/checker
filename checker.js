@@ -72,6 +72,10 @@
 
     document.body.appendChild(iframe);
     document.body.appendChild(overlay);
+    iframe.onload = function () {
+      const iframeWindow = iframe.contentWindow;
+      iframeWindow.postMessage(window.location.href, appUrl);
+    };
   }
 
   async function axeScanner() {
