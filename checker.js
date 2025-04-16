@@ -74,7 +74,7 @@
     document.body.appendChild(overlay);
     iframe.onload = function () {
       const iframeWindow = iframe.contentWindow;
-      iframeWindow.postMessage(window.location.href, appUrl);
+      iframeWindow.postMessage({ message: window.location.href }, appUrl);
     };
   }
 
