@@ -11,25 +11,7 @@
     return;
   }
   verifyAdmin();
-  function getAdminDataByDomain() {
-    const url = `/entities/${appUrl}/pages`;
-
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Sample expected response:
-        // { "adminEmail": "admin@example.com", "isActive": true }
-        console.log("Response:", data);
-      })
-      .catch((error) => {
-        console.error("Fetch error:", error);
-      });
-  }
+  function getAdminDataByDomain() {}
 
   function verifyAdmin() {
     const url = "http://localhost:3000/api/entities/validate";
@@ -55,13 +37,14 @@
       })
       .then((result) => {
         console.log("Success:", result);
+        addingCheckerBtnStyleTag();
+        drawCheckerBtn();
       })
       .catch((error) => {
         console.error("Error:", error);
+        alert("You are not authorized to use this feature.");
       });
   }
-  addingCheckerBtnStyleTag();
-  drawCheckerBtn();
 
   function openWidget() {
     const overlay = document.createElement("div");
@@ -74,7 +57,10 @@
     document.body.appendChild(overlay);
     iframe.onload = function () {
       const iframeWindow = iframe.contentWindow;
-      iframeWindow.postMessage({ message: 'domain',domain: window.location.href }, appUrl);
+      iframeWindow.postMessage(
+        { message: "domain", domain: window.location.href },
+        appUrl
+      );
     };
   }
 
@@ -118,7 +104,7 @@
       try {
         const results = await axeScanner();
         const currentPageUrl = window.location.href;
-        
+
         const iframeApp = document.getElementById("iframeApp");
         iframeApp.contentWindow.postMessage(
           { message: "results", results, currentPageUrl },
