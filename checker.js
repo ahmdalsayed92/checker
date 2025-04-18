@@ -4,7 +4,7 @@
   const scriptTag = document.currentScript;
   const urlParams = new URLSearchParams(scriptTag.src.split("?")[1]);
   const apiKey = urlParams.get("key");
-  const adminEmail = "ahmdalsayed92@gmail.com";
+  const adminEmail = "ahmdalsayedasdasd92@gmail.com";
 
   if (!apiKey) {
     console.error("API key is missing.");
