@@ -117,10 +117,11 @@
       console.log("Starting accessibility scan...");
       try {
         const results = await axeScanner();
-
+        const currentPageUrl = window.location.href;
+        
         const iframeApp = document.getElementById("iframeApp");
         iframeApp.contentWindow.postMessage(
-          { message: "results", results },
+          { message: "results", results, currentPageUrl },
           appUrl
         );
       } catch (error) {
