@@ -4,7 +4,9 @@
   const scriptTag = document.currentScript;
   const urlParams = new URLSearchParams(scriptTag.src.split("?")[1]);
   const apiKey = urlParams.get("key");
-  const adminEmail = "ahmdalsayed92@gmail.com";
+  const adminEmail = localStorage.getItem("adminEmail")
+    ? localStorage.getItem("adminEmail")
+    : "ahmdalsayed92@gmail.com";
 
   if (!apiKey) {
     console.error("API key is missing.");
@@ -45,9 +47,7 @@
       headers: {
         "Content-Type": "application/json",
         "x-api-key": apiKey,
-        "x-admin-email": localStorage.getItem("adminEmail")
-          ? localStorage.getItem("adminEmail")
-          : adminEmail,
+        "x-admin-email": adminEmail,
       },
       body: JSON.stringify(data),
     })
@@ -79,7 +79,7 @@
     iframe.onload = function () {
       const iframeWindow = iframe.contentWindow;
       iframeWindow.postMessage(
-        { message: "domain", domain: window.location.href },
+        { message: "domain", domain: window.location.href, apiKey, adminEmail },
         appUrl
       );
     };
