@@ -59,8 +59,12 @@
       })
       .then((result) => {
         console.log("Success:", result);
-        addingCheckerBtnStyleTag();
-        drawCheckerBtn();
+        if (result.valid === true) {
+          addingCheckerBtnStyleTag();
+          drawCheckerBtn();
+        } else {
+          alert("Invalid API key or admin email.");
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
