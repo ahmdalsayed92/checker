@@ -11,7 +11,25 @@
     return;
   }
   verifyAdmin();
-  function getAdminDataByDomain() {}
+  function getAdminDataByDomain() {
+    const url = `/entities/${appUrl}/pages`;
+
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Sample expected response:
+        // { "adminEmail": "admin@example.com", "isActive": true }
+        console.log("Response:", data);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+  }
 
   function verifyAdmin() {
     const url = "http://localhost:3000/api/entities/validate";
@@ -26,6 +44,10 @@
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-api-key": apiKey,
+        "x-admin-email": localStorage.getItem("adminEmail")
+          ? localStorage.getItem("adminEmail")
+          : adminEmail,
       },
       body: JSON.stringify(data),
     })
