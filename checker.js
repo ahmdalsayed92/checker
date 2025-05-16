@@ -4,9 +4,7 @@
   const scriptTag = document.currentScript;
   const urlParams = new URLSearchParams(scriptTag.src.split("?")[1]);
   const apiKey = urlParams.get("key");
-  const adminEmail = localStorage.getItem("adminEmail")
-    ? localStorage.getItem("adminEmail")
-    : "ahmdalsayed92@gmail.com";
+  const adminEmail = localStorage.getItem("adminEmail");
 
   if (!apiKey) {
     console.error("API key is missing.");
