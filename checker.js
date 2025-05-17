@@ -136,7 +136,7 @@
 
         const iframeApp = document.getElementById("iframeApp");
         iframeApp.contentWindow.postMessage(
-          { message: "results", results, currentPageUrl },
+          { message: "results", results, currentPageUrl, apiKey, adminEmail },
           appUrl
         );
       } catch (error) {
