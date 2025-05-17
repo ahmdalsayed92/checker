@@ -81,7 +81,7 @@
     iframe.onload = function () {
       const iframeWindow = iframe.contentWindow;
       iframeWindow.postMessage(
-        { message: "domain", domain: window.location.href, apiKey, adminEmail },
+        { message: "domain", domain: window.location.host, apiKey, adminEmail },
         appUrl
       );
     };
