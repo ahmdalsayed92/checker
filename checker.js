@@ -32,7 +32,7 @@
   }
 
   function verifyAdmin() {
-    const url = "http://localhost:3000/api/validate";
+    const url = "http://localhost:3000/api/public/validate";
 
     const data = {
       domain: window.location.href,
