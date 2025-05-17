@@ -35,9 +35,9 @@
     const url = "http://localhost:3000/api/validate";
 
     const data = {
-      domain: window.location.host,
-      apiKey: apiKey,
-      adminEmail: adminEmail,
+      domain: window.location.href,
+      // apiKey: apiKey,
+      // adminEmail: adminEmail,
     };
 
     fetch(url, {
