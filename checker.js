@@ -35,7 +35,7 @@
     const url = "http://localhost:3000/api/public/validate";
 
     const data = {
-      domain: window.location.href,
+      domain: window.location.host,
       // apiKey: apiKey,
       // adminEmail: adminEmail,
     };
